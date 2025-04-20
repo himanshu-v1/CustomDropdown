@@ -1,7 +1,17 @@
 # CustomDropdown
-This scropt is to create a custom UI from the HTML default OOTB select element. In order to work, select must be wrapped inside a div with class guidefield.
+This script is to create a custom UI element from the HTML default OOTB select element. In order to work:
+  - select must be wrapped inside a div with class guidefield,
+  - select must have a unique ID attached to it.
+
+-For Example:-
+`
+<element class="gidefield">
+  <select id="<unique ID>">...</select>
+</element>
+`
 
 Key features:
+- Supports ---dynamically created options--- list i.e. either dependent on an --API response-- or --another script-- to create options dynamically.
 - Supports full OOTB select featues with following keyboard accessibility:
   - When dropdown element is in focus:
     - `Enter` or `Space` key opens up the dropdown list and
@@ -25,5 +35,5 @@ Key features:
 
 #Bonus
 
-- Comes with a utility that can be used to find next and previous custom focusable element on the page with respect to a specific element. ==Returns the element==
-- Comes with a utility that returns a list of all focusable elements on the page in serial order (visible only). --Returns an Array--
+- Comes with a utility that can be used to find next and previous custom focusable element on the page with respect to a specific element. -Returns the element-
+- Comes with a utility that returns a list of all focusable elements on the page in serial order (visible only). -Returns an Array-
