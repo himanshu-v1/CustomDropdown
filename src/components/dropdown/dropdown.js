@@ -266,10 +266,10 @@ function pullFormElementsIntoViewOnFocus(dropdown) {
 
 function addFocusBlurEvents(el) {
   el.addEventListener('focus', () => {
-    el.closest('.guideFieldNode').classList.add('guideActiveField');
+    el.closest('.guidefield').classList.add('guideActiveField');
   });
   el.addEventListener('blur', () => {
-    el.closest('.guideFieldNode').classList.remove('guideActiveField');
+    el.closest('.guidefield').classList.remove('guideActiveField');
   });
 }
 
