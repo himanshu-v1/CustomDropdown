@@ -1,89 +1,9 @@
-.formV2 {
-    .formcontainer {
-      ul.custom-dropdown-menu {
-        position: absolute;
-        background: @white;
-        width: 100% !important;
-        z-index: 1001;
-        padding: 0 !important;
-        border-radius: 0;
-        text-align: left;
-        margin-top: -5px;
-        list-style-type: none;
-        max-height: 291px; 
-        overflow-y: auto; 
-        border: 2px solid @form-element-highlight;
-        li {
-          display: flex;
-          justify-content: space-between;
-          border: none;
-          border-top: none;
-          background: @white;
-          cursor: pointer;
-          height: auto;
-          margin: 0;
-          padding: 1.125em 1.625em;
-          position: relative;
-          color: @black;
-          font-size: 1em;
-          line-height: 1em;
-          &:hover, &.active {
-            background: @custom-dropdown-active-color;
-            a {
-              color: @black;
-              span {
-                color: @black;
-              }
-            }
-          }
-          &:focus {
-            border: 1px dotted @form-focus-color;
-            outline: none;
-          }
-          &.active {
-            &::after {
-              content: '';
-              display: inline-block;
-              height: 20px;
-              width: 20px;
-              background: url(~'@{resourcePath}/icons/Tick_Hover.svg') calc(95.5%) 50% / auto 1rem no-repeat, rgba(255, 255, 255, 0) !important;
-            }
-          }
-          a {
-            color: @black;
-            transition: none !important;
-            white-space: normal;
-            padding: 0;
-            font-size: 14px;
-            span {
-              color: @black;
-            }
-          }
-        }
-      }
-    }
-  }
-  // add this class to the form to disable custom dropdown
-  // and use the default select dropdown
-  .disable-custom-dd {
-    .custom-dropdown-menu {
-      display: none !important;
-    }
-    select {
-      option {
-        display: block !important;
-      }
-    }
-  }
-  
-  .aemformcontainer .container .guideDropDownList input {
+.guidefield {
+  input {
     height: 60px!important;
     border-color: #53565a!important;
     padding-inline-start: 1em!important;
     padding-inline-end: 5em;
-  }
-  
-  .aemformcontainer .container .dropDownList input {
     border-left-width: 1px;
     border-bottom-width: 1px;
     border-top-width: 1px;
@@ -94,57 +14,134 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-  }
-  
-  .dropDownList input {
     background: url(../../../../etc.clientlibs/modern/clientlibs/clientlib-site/resources/icons/Chevron-Down-Default.svg) 95.5% 50% / auto 1rem no-repeat,rgba(255,255,255,.5) !important;
+
+    &:focus-visible {
+      outline-offset: 6px;
+      outline: 1px dotted #646464;
+    }
+
+    &[role="selectbox"] {
+      margin: 0;
+      border-color: ButtonBorder;
+      font: -moz-list;
+      white-space: nowrap !important;
+      word-wrap: normal !important;
+      cursor: default;
+      box-sizing: border-box;
+      user-select: none;
+      border-width: 2px;
+      border-style: inset;
+      overflow: clip;
+      display: inline-block;
+      page-break-inside: avoid;
+      overflow-clip-box: padding-box !important;
+      padding-block: 1px;
+      padding-inline: 4px;
+      background-color: -moz-Combobox;
+      color: -moz-ComboboxText;
+      vertical-align: baseline;
+      appearance: auto;
+      -moz-default-appearance: menulist;
+    }
   }
-  
-  input[role="selectbox"] {
-    margin: 0;
-    border-color: ButtonBorder;
-    font: -moz-list;
-    white-space: nowrap !important;
-    word-wrap: normal !important;
-    cursor: default;
-    box-sizing: border-box;
-    user-select: none;
-    border-width: 2px;
-    border-style: inset;
-    overflow: clip;
-    display: inline-block;
-    page-break-inside: avoid;
-    overflow-clip-box: padding-box !important;
-    padding-block: 1px;
-    padding-inline: 4px;
-    background-color: -moz-Combobox;
-    color: -moz-ComboboxText;
-    vertical-align: baseline;
-    appearance: auto;
-    -moz-default-appearance: menulist;
+
+  &.guideActiveField {
+    input {
+      border-color: #117cb0 !important;
+      border-width: 2px;
+    }
   }
-  
-  .aemformcontainer .container .guideDropDownList.guideActiveField input {
-    border-color:#117cb0 !important;
-    border-width:2px
+
+  &[data-disabled=true] {
+    input {
+      border-color:#bbbcbc;
+      color:#bbbcbc
+    }
   }
-  
-  .aemformcontainer .container .guideDropDownList[data-disabled=true] input {
-    border-color:#bbbcbc;
-    color:#bbbcbc
+
+  &.validation-failure {
+    input, textarea {
+      border-color: #da291c;
+      border-width: 2px;
+    }
+    input:focus-visible {
+      outline: none;
+    }
   }
-  
-  .aemformcontainer .container .guideDropDownList.validation-failure input,
-  .aemformcontainer .container .guideDropDownList.validation-failure textarea {
-    border-color:#da291c;
-    border-width:2px
+
+  ul.custom-dropdown-menu {
+    position: absolute;
+    background: @white;
+    width: 100% !important;
+    z-index: 1001;
+    padding: 0 !important;
+    border-radius: 0;
+    text-align: left;
+    margin-top: -5px;
+    list-style-type: none;
+    max-height: 291px; 
+    overflow-y: auto; 
+    border: 2px solid @form-element-highlight;
+    li {
+      display: flex;
+      justify-content: space-between;
+      border: none;
+      border-top: none;
+      background: @white;
+      cursor: pointer;
+      height: auto;
+      margin: 0;
+      padding: 1.125em 1.625em;
+      position: relative;
+      color: @black;
+      font-size: 1em;
+      line-height: 1em;
+      &:hover, &.active {
+        background: @custom-dropdown-active-color;
+        a {
+          color: @black;
+          span {
+            color: @black;
+          }
+        }
+      }
+      &:focus {
+        border: 1px dotted @form-focus-color;
+        outline: none;
+      }
+      &.active {
+        &::after {
+          content: '';
+          display: inline-block;
+          height: 20px;
+          width: 20px;
+          background: url(~'@{resourcePath}/icons/Tick_Hover.svg') calc(95.5%) 50% / auto 1rem no-repeat, rgba(255, 255, 255, 0) !important;
+        }
+      }
+      a {
+        color: @black;
+        transition: none !important;
+        white-space: normal;
+        padding: 0;
+        font-size: 14px;
+        span {
+          color: @black;
+        }
+      }
+    }
   }
-  
-  .aemformcontainer .container .guideDropDownList.validation-failure input:focus-visible {
-    outline:none
+}
+
+// add this class to the form to disable custom dropdown
+// and use the default select dropdown
+.disable-custom-dd {
+  .custom-dropdown-menu {
+    display: none !important;
   }
-  
-  .aemformcontainer .container .guideDropDownList input:focus-visible {
-    outline-offset:6px;
-    outline:1px dotted #646464
+  select {
+    option {
+      display: block !important;
+    }
   }
+}
